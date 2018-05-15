@@ -14,10 +14,10 @@ export class AuthenticationService {
         // TODO authentication should not be fulfilled on datasource,
         // it should be impleented on a backend security engine.
         this.userDatasource.getUser(username, password).subscribe(user => this.user);
-        return this.authenticated();
+        return this.isAuthenticated();
     }
 
-    authenticated() {
+    isAuthenticated() {
         return this.user != null;
     }
 }

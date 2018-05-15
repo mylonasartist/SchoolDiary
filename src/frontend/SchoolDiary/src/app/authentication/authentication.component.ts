@@ -20,4 +20,8 @@ export class AuthenticationComponent implements OnInit {
   authenticate() {
   }
 
+  isAuthenticated(): boolean {
+    return this.authenticationService.isAuthenticated();
+  }
+
 }

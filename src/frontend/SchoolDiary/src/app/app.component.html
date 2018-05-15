@@ -1,1 +1,15 @@
-<app-authentication></app-authentication>
+<div class="navbar navbar-dark bg-dark">
+        <a class="navbar-brand text-primary">SCHOOL DIARY</a>
+        <ul class="nav justify-content-end">
+                <li class="nav-item">
+                  <a class="nav-link disabled" [routerLink]="null" routerLinkActive="is-active">My Diaries</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " routerLink="/about">About School Diary</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " routerLink="/login">Login</a>
+                </li>
+              </ul>
+    </div>
+<router-outlet></router-outlet>
