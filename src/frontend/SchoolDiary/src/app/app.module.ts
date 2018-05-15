@@ -3,18 +3,20 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AuthorizationComponent } from './authorization/authorization.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
+import { UserDataSource } from './datasource/datasource.user';
+import { AuthenticationService } from './authentication/authenticationService';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AuthorizationComponent
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [UserDataSource, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
