@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthenticationService } from './authentication/authenticationService';
-import { SdAttrDirective } from './sd.attr.directive';
 
 @Component({
   selector: 'app-root',

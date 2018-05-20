@@ -4,8 +4,11 @@
   <ul class="nav justify-content-end">
     <li class="nav-item">
       <a class="nav-link is-active"
-        [routerLink]="authenticationService.isAuthenticated()? 'diaries': null"
-        [appSdAttr]="authenticationService.isAuthenticated()? 'enabled': 'disabled'">
+        [ngClass]="{
+          'disabled': !authenticationService.isAuthenticated(),
+          'enabled': authenticationService.isAuthenticated()
+        }"
+        routerLink="/diaries">
         My Diaries
       </a>
     </li>

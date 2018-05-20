@@ -9,7 +9,6 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DiariesComponent } from './diaries/diaries.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
-import { SdAttrDirective } from './sd.attr.directive';
 
 
 @NgModule({
@@ -18,8 +17,7 @@ import { SdAttrDirective } from './sd.attr.directive';
     AuthenticationComponent,
     DiariesComponent,
     AboutComponent,
-    HomeComponent,
-    SdAttrDirective
+    HomeComponent
   ],
   imports: [
     BrowserModule,
