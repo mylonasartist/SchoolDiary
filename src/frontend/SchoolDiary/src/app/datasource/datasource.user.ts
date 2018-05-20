@@ -9,11 +9,11 @@ export class UserDataSource {
     private users: User[];
 
     constructor() {
-        this.users = new Array<User> (
-            { name: 'admin',
-              password: 'admin123',
-              roles: new Array<Role>(Role.Admin) }
-        );
+        this.users = new Array<User> ({
+            name: 'admin',
+            password: 'admin123',
+            roles: new Array<Role>(Role.Admin)
+        });
     }
 
     getUsers(): Observable<User[]> {
@@ -21,7 +21,11 @@ export class UserDataSource {
     }
 
     getUser(name: string, password: string): Observable<User> {
-        return of(this.users.find(user =>
-            (name === user.name) && (password === user.password)));
+        let result = this.users.find(user =>
+            (name === user.name) && (password === user.password));
+        if (result === undefined) {
+            result = null;
+        }
+        return of(result);
     }
 }
