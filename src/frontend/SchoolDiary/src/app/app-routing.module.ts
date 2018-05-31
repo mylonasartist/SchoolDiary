@@ -7,11 +7,16 @@ import { AuthenticationComponent } from './authentication/authentication.compone
 import { HomeComponent } from './home/home.component';
 
 const routes: Route[] = [
-  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'diaries', component: DiariesComponent },
   { path: 'about', component: AboutComponent},
-  { path: 'login', component: AuthenticationComponent}
+  { path: 'login', component: AuthenticationComponent},
+  {
+    path: 'admin',
+    loadChildren: 'app/admin/admin.module#AdminModule'
+    // TODO set guard to novigate only after login.
+  },
+  { path: '', component: HomeComponent }
 ];
 
 @NgModule({

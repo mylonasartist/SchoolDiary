@@ -9,6 +9,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { DiariesComponent } from './diaries/diaries.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { HomeComponent } from './home/home.component';
     AuthenticationComponent,
     DiariesComponent,
     AboutComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

@@ -24,11 +24,17 @@
         </div>
         <div class="form-row">
             <div class="col-md-4"></div>
-            <button class="btn btn-primary m-1" type="submit"
-              [disabled]="!(username?.length > 0) || !(password?.length > 0)">
-              Login
+            <div class="col-md-4 mt-1">
+                <button class="btn btn-primary mr-1" type="submit"
+                [disabled]="!(username?.length > 0) || !(password?.length > 0)">
+                Login
             </button>
-            <button class="btn btn-secondary m-1" type="reset">Cancel</button>
+            <button class="btn btn-secondary ml-1" type="reset">Cancel</button>
+            </div>
+        </div>
+        <div class="form-row mt-3">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 align-bottom">New user? <a routerLink="http://yahoo.com">Register</a></div>
         </div>
     </form>
 </div>

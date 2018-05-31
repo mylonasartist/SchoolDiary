@@ -1,5 +1,5 @@
 <!-- TODO consider put navigation into a separate component -->
-<div class="navbar navbar-dark bg-dark">
+<div class="navbar bg-dark">
   <a class="navbar-brand text-primary">SCHOOL DIARY</a>
   <ul class="nav justify-content-end">
     <li class="nav-item">
@@ -16,11 +16,23 @@
       <a class="nav-link" routerLink="/about">About School Diary</a>
     </li>
     <li *ngIf="!authenticationService.isAuthenticated()" class="nav-item">
-      <a class="nav-link" routerLink="/login">Login</a>
+      <a class="nav-link" routerLink="/login">Login/Register</a>
     </li>
-    <li *ngIf="authenticationService.isAuthenticated()" class="nav-item">
-      <a class="nav-link text-primary" (click)="authenticationService.logout()">Logout</a>
+    <li *ngIf="authenticationService.isAuthenticated()" class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle"
+        data-toggle="dropdown"
+        href="#"
+        aria-haspopup="true"
+        aria-expanded="false">
+        <i class="fa fa-user" area-hidden="true"> {{authenticationService.userName}}</i>
+      </a>
+      <div class="dropdown-menu bg-dark">
+        <a class="dropdown-item bg-dark text-primary" href="#" (click)="authenticationService.logout()">Logout</a>
+        <a *ngIf="authenticationService.admin" class="dropdown-item bg-dark text-primary" routerLink="/admin">Admin</a>
+      </div>
     </li>
+    <!--Empty one in order for the dropdown not to expand-->
+    <li class="nav-item"><a class="nav-link">          </a></li>
   </ul>
 </div>
 <router-outlet></router-outlet>

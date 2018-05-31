@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-admin',
+  moduleId: module.id,
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })

@@ -2,12 +2,21 @@ import { Injectable } from '@angular/core';
 import { UserDataSource } from '../datasource/datasource.user';
 import { User } from './user';
 import { AuthenticationStatus } from './authentication-status';
+import { Role } from './Role';
 
 @Injectable()
 export class AuthenticationService {
     constructor (private userDatasource: UserDataSource) {}
 
     private user: User = null;
+
+    get userName(): string {
+        return this.user && this.user.name;
+    }
+
+    get admin(): boolean {
+        return this.user && this.user.roles && this.user.roles.includes(Role.Admin);
+    }
 
     authenticate(username: string, password: string): AuthenticationStatus {
 

@@ -9,11 +9,14 @@ export class UserDataSource {
     private users: User[];
 
     constructor() {
-        this.users = new Array<User> ({
+        this.users = [{
             name: 'admin',
             password: 'admin123',
-            roles: new Array<Role>(Role.Admin)
-        });
+            roles: [Role.Admin]
+        }, {
+            name: 'user1',
+            password: 'pass1'
+        }];
     }
 
     getUsers(): Observable<User[]> {
