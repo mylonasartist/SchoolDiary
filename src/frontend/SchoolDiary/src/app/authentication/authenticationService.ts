@@ -39,7 +39,7 @@ export class AuthenticationService {
         return result;
     }
 
-    isAuthenticated() {
+    isAuthenticated(): boolean {
         return this.user != null;
     }
 

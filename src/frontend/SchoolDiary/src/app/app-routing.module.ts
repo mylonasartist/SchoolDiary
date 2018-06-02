@@ -5,16 +5,17 @@ import { DiariesComponent } from './diaries/diaries.component';
 import { AboutComponent } from './about/about.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
+import { AuthenticatedGuard } from './authenticated.guard';
 
 const routes: Route[] = [
   { path: 'home', component: HomeComponent },
-  { path: 'diaries', component: DiariesComponent },
+  { path: 'diaries', component: DiariesComponent, canActivate: [AuthenticatedGuard] },
   { path: 'about', component: AboutComponent},
   { path: 'login', component: AuthenticationComponent},
   {
     path: 'admin',
-    loadChildren: 'app/admin/admin.module#AdminModule'
-    // TODO set guard to novigate only after login.
+    loadChildren: 'app/admin/admin.module#AdminModule',
+    canActivate: [AuthenticatedGuard]
   },
   { path: '', component: HomeComponent }
 ];

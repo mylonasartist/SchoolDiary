@@ -1,3 +1,14 @@
-<p>
-  TODO add Admin features here
-</p>
+<div class="container-fluid p-3">
+  <div class="row justify-content-start">
+    <!-- TODO provide internationalization -->
+    <!-- TODO list admin features taken from some source -->
+    <div class="col-3">
+      <button class="btn btn-outline-info btn-block" routerLink="/admin/main/subject">
+        Subject
+      </button>
+    </div>
+    <div class="col-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

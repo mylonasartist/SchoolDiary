@@ -3,9 +3,14 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { SubjectComponent } from './subject/subject.component';
 
 const routing = RouterModule.forChild([
-  { path: 'main', component: AdminComponent },
+  { path: 'main', component: AdminComponent ,
+      children: [
+        { path: 'subject', component: SubjectComponent }
+      ]
+  },
   { path: '', redirectTo: 'main'}
 ]);
 
@@ -15,6 +20,6 @@ const routing = RouterModule.forChild([
     FormsModule,
     routing
   ],
-  declarations: [AdminComponent]
+  declarations: [AdminComponent, SubjectComponent]
 })
 export class AdminModule { }

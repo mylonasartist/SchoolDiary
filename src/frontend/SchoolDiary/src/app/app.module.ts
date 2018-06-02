@@ -10,7 +10,7 @@ import { DiariesComponent } from './diaries/diaries.component';
 import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
-
+import { AuthenticatedGuard } from './authenticated.guard';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,10 @@ import { UserComponent } from './user/user.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [UserDataSource, AuthenticationService],
+  providers: [
+    UserDataSource,
+    AuthenticationService,
+    AuthenticatedGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
