@@ -6,6 +6,7 @@ import { AboutComponent } from './about/about.component';
 import { AuthenticationComponent } from './authentication/authentication.component';
 import { HomeComponent } from './home/home.component';
 import { AuthenticatedGuard } from './authenticated.guard';
+import { AdminGuard } from './admin.guard';
 
 const routes: Route[] = [
   { path: 'home', component: HomeComponent },
@@ -15,7 +16,7 @@ const routes: Route[] = [
   {
     path: 'admin',
     loadChildren: 'app/admin/admin.module#AdminModule',
-    canActivate: [AuthenticatedGuard]
+    canActivate: [AdminGuard]
   },
   { path: '', component: HomeComponent }
 ];

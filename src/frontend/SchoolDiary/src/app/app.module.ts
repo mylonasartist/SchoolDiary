@@ -11,6 +11,7 @@ import { AboutComponent } from './about/about.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AuthenticatedGuard } from './authenticated.guard';
+import { AdminGuard } from './admin.guard';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,9 @@ import { AuthenticatedGuard } from './authenticated.guard';
   providers: [
     UserDataSource,
     AuthenticationService,
-    AuthenticatedGuard],
+    AuthenticatedGuard,
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
