@@ -11,34 +11,36 @@ export class AppControl extends FormControl {
 
     getValidationMessages(): string[] {
         const messages = [];
-        Object.keys(this.errors).forEach(error => {
-            switch (error) {
-                case 'required':
-                    messages.push(`${this.label} is required`);
-                    break;
-                case 'pattern':
-                    messages.push(`Value of ${this.label} is invalid`);
-                    break;
-                case 'min':
-                    messages.push(
-                        `Minimum value of ${this.label} should be ${this.errors['min'].min}`);
-                    break;
-                case 'max':
-                    messages.push(
-                        `Maximum value of ${this.label} should be ${this.errors['max'].max}`);
-                    break;
-                case 'minLength':
-                    messages.push(
-                        `At least ${this.errors['minLength'].requiredLength} characters ` +
-                        `required for ${this.label}`);
-                    break;
-                case 'maxLength':
-                    messages.push(
-                        `Maximum ${this.errors['maxLength'].requiredLength} ` +
-                        `characters allowed for ${this.label}`);
-                    break;
-            }
-        });
+        if (this.errors) {
+            Object.keys(this.errors).forEach(error => {
+                switch (error) {
+                    case 'required':
+                        messages.push(`${this.label} is required`);
+                        break;
+                    case 'pattern':
+                        messages.push(`Value of ${this.label} is invalid`);
+                        break;
+                    case 'min':
+                        messages.push(
+                            `Minimum value of ${this.label} should be ${this.errors['min'].min}`);
+                        break;
+                    case 'max':
+                        messages.push(
+                            `Maximum value of ${this.label} should be ${this.errors['max'].max}`);
+                        break;
+                    case 'minLength':
+                        messages.push(
+                            `At least ${this.errors['minLength'].requiredLength} characters ` +
+                            `required for ${this.label}`);
+                        break;
+                    case 'maxLength':
+                        messages.push(
+                            `Maximum ${this.errors['maxLength'].requiredLength} ` +
+                            `characters allowed for ${this.label}`);
+                        break;
+                }
+            });
+        }
         return messages;
     }
 }

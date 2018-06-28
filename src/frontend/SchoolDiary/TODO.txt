@@ -1,0 +1,2 @@
+- Provide dirty state checking for the views.
+- Provide localization, i18n.

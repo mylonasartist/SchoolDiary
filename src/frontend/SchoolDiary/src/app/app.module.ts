@@ -12,6 +12,9 @@ import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { AuthenticatedGuard } from './authenticated.guard';
 import { AdminGuard } from './admin.guard';
+import { SubjectService } from './domain/subject/service/subject.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,13 +29,16 @@ import { AdminGuard } from './admin.guard';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [
     UserDataSource,
     AuthenticationService,
     AuthenticatedGuard,
-    AdminGuard
+    AdminGuard,
+    SubjectService
   ],
   bootstrap: [AppComponent]
 })

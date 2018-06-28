@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SubjectComponent } from './subject/subject.component';
+import { SubjectEditorComponent } from './subject.editor/subject.editor.component';
 import { Texts } from './admin.module.texts';
+import { SubjectFormGroupService } from './subject.editor/subject.formgroup.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 const routing = RouterModule.forChild([
   { path: 'main', component: AdminComponent ,
       children: [
-        { path: 'subject', component: SubjectComponent }
+        { path: 'subject', component: SubjectEditorComponent }
       ]
   },
   { path: '', redirectTo: 'main'}
@@ -20,11 +22,13 @@ const routing = RouterModule.forChild([
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    routing
+    routing,
+    NgbModule.forRoot()
   ],
-  declarations: [AdminComponent, SubjectComponent],
+  declarations: [AdminComponent, SubjectEditorComponent],
   providers: [
-    Texts
+    Texts,
+    SubjectFormGroupService
   ]
 })
 export class AdminModule { }
