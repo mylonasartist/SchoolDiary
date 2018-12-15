@@ -1,0 +1,35 @@
+<div class="d-flex justify-content-end">
+  <button class="btn btn-info mb-1 mr-3" routerLink="/admin/main/subjects/create">
+    <i class="fa fa-plus"></i>
+  </button>
+</div>
+<!-- add paging -->
+<table class="table table-sm table-bordered">
+  <thead>
+    <tr class="d-flex">
+      <th class="col-1" scope="col">#</th>
+      <th class="col-4" scope="col">{{texts.nameLabel}}</th>
+      <th class="col-5" scope="col">{{texts.descriptionLabel}}</th>
+      <th class="col-2" scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="d-flex" *ngFor="let subject of subjects; let i = index;">
+      <th class="align-middle col-1" scope="row">{{i + 1}}</th>
+      <td class="align-middle col-4">
+        {{subject.name}}
+      </td>
+      <td class="align-middle col-5">
+        {{subject.description}}
+      </td>
+      <td class="col-2 d-flex">
+        <button class="btn btn-danger ml-1 mr-auto" (click)="remove(i)">
+          <i class="fa fa-minus"></i>
+        </button>
+        <button class="btn btn-info mr-1" routerLink="/admin/main/subjects/{{subject.id}}">
+            <i class="fa fa-edit"></i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

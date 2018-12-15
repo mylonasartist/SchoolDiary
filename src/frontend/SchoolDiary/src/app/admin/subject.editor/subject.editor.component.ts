@@ -4,6 +4,10 @@ import { Subject } from '../../domain/subject/model/subject';
 import { SubjectService } from '../../domain/subject/service/subject.service';
 import { SubjectFormGroupService } from './subject.formgroup.service';
 import { AppFormGroup } from '../../controls/app.formgroup';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
+import { AppModalContentService } from '../../controls/ngbd-modal-content/app.modal.content.service';
+import { FormGroup, FormBuilder } from '../../../../node_modules/@angular/forms';
 
 @Component({
   selector: 'app-subject',
@@ -12,51 +16,66 @@ import { AppFormGroup } from '../../controls/app.formgroup';
 })
 export class SubjectEditorComponent implements OnInit {
 
-  // TODO use form, validation.
-  // form: SubjectFormGroup;
-  subjects: Subject[] = [];
-  currentIndex: number;
-  form: AppFormGroup;
+  form: FormGroup;
+  subject: Subject;
+  isNew: boolean;
 
   constructor(public texts: Texts,
+    private route: ActivatedRoute,
+    private location: Location,
     private subjectsService: SubjectService,
-    private formGroupService: SubjectFormGroupService) {}
+    private formBuilder: FormBuilder,
+    private modalService: AppModalContentService) { }
 
   ngOnInit() {
-    // this.form = new SubjectFormGroup();
-    this.loadSubjects();
-    this.form = this.formGroupService.toFormGroup(this.subjects);
-  }
-
-  loadSubjects() {
-    // TODO load from backend
-    this.subjectsService.get().subscribe(subjects => {
-      this.subjects = subjects;
-      this.form = this.formGroupService.toFormGroup(this.subjects);
-    });
+    this.form = this.formBuilder.group({
+      name: '',
+      description: ''}
+    );
+    this.loadSubject();
   }
 
   save() {
-    // TODO save to backend
-    console.log('Saving subjects...');
-
-    // TODO remove after debug
-    this.form.getValidationMessages().forEach(message => console.log(message));
-  }
-
-  addNew() {
-    if (this.subjects.length === 0 || this.subjects[this.subjects.length - 1].name) {
-      this.subjects.push(new Subject());
-      this.formGroupService.addControls(this.form, this.subjects.length - 1);
+    if (this.isNew) {
+      this.subjectsService.create(this.subject).subscribe();
+    } else {
+      this.subjectsService.update(this.subject).subscribe();
     }
   }
 
-  // TODO add warning, question "Are you sure...?"
-  removeCurrent() {
-    this.subjects.splice(this.currentIndex, 1);
+  // TODO make the styled warning
+  reset() {
+    const me = this;
+    if (this.form.dirty) {
+      this.modalService.openWarning('Warning',
+        'Are you sure you want to Reset?<br>The changes will not be saved!',
+        'Reset',
+        () => {
+          me.form.reset();
+          this.loadSubject();
+        });
+    }
   }
 
-  getControlName(index: number, propertyName: string): string {
-    return index + propertyName;
+  // TODO add routing guard if changes wil be lost
+  back() {
+    this.location.back();
+  }
+
+  private loadSubject() {
+    const id = +this.route.snapshot.paramMap.get('id');
+    if (id) {
+      this.subjectsService.getEntity(id).subscribe(subject => {
+        this.subject = subject;
+        this.form.setValue({
+          name: this.subject.name,
+          description: this.subject.description
+        });
+      });
+      this.isNew = false;
+    } else {
+      this.subject = new Subject();
+      this.isNew = true;
+    }
   }
 }

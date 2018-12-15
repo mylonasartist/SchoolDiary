@@ -8,4 +8,5 @@ export class Texts {
     descriptionLabel = 'Description';
     saveLabel = 'Save';
     resetLabel = 'Reset';
+    backToListLabel = 'Back To List';
 }

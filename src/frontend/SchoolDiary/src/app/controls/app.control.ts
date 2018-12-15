@@ -28,14 +28,14 @@ export class AppControl extends FormControl {
                         messages.push(
                             `Maximum value of ${this.label} should be ${this.errors['max'].max}`);
                         break;
-                    case 'minLength':
+                    case 'minlength':
                         messages.push(
-                            `At least ${this.errors['minLength'].requiredLength} characters ` +
+                            `At least ${this.errors['minlength'].requiredLength} characters ` +
                             `required for ${this.label}`);
                         break;
-                    case 'maxLength':
+                    case 'maxlength':
                         messages.push(
-                            `Maximum ${this.errors['maxLength'].requiredLength} ` +
+                            `Maximum ${this.errors['maxlength'].requiredLength} ` +
                             `characters allowed for ${this.label}`);
                         break;
                 }

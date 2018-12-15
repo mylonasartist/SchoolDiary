@@ -7,11 +7,14 @@ import { SubjectEditorComponent } from './subject.editor/subject.editor.componen
 import { Texts } from './admin.module.texts';
 import { SubjectFormGroupService } from './subject.editor/subject.formgroup.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SubjectsViewComponent } from './subjects.view/subjects.view.component';
 
 const routing = RouterModule.forChild([
-  { path: 'main', component: AdminComponent ,
+  { path: 'main', component: AdminComponent,
       children: [
-        { path: 'subject', component: SubjectEditorComponent }
+        { path: 'subjects/:id', component: SubjectEditorComponent },
+        { path: 'subjects/create', component: SubjectEditorComponent },
+        { path: 'subjects', component: SubjectsViewComponent }
       ]
   },
   { path: '', redirectTo: 'main'}
@@ -25,7 +28,7 @@ const routing = RouterModule.forChild([
     routing,
     NgbModule.forRoot()
   ],
-  declarations: [AdminComponent, SubjectEditorComponent],
+  declarations: [AdminComponent, SubjectEditorComponent, SubjectsViewComponent],
   providers: [
     Texts,
     SubjectFormGroupService

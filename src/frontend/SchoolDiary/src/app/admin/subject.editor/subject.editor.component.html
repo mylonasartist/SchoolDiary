@@ -1,72 +1,29 @@
-<div class="form-group" [formGroup]="form">
-
-    <div class="d-flex">
-        <button class="btn btn-primary mb-1 mr-1" (click)="save()">{{texts.saveLabel}}</button>
-        <button class="btn btn-secondary mb-1 mr-auto" (click)="loadSubjects()">{{texts.resetLabel}}</button>
-        <button class="btn btn-info mb-1 mr-1" (click)="addNew()">
-          <i class="fa fa-plus"></i>
-        </button>
-        <button class="btn btn-danger mb-1" (click)="removeCurrent()">
-          <i class="fa fa-minus"></i>
-        </button>
-      </div>
-  <table class="table table-sm table-bordered">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">{{texts.nameLabel}}</th>
-          <th scope="col">{{texts.descriptionLabel}}</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let subject of subjects; let i = index;" (click)="currentIndex = i">
-          <th scope="row">{{i + 1}}</th>
-          <td class="p-0">
-            <input type="text"
-              [name]="getControlName(i, 'name')"
-              [formControlName]="getControlName(i, 'name')"
-              class="form-control"
-              [(ngModel)]="subject.name"
-              placement="top"
-              [ngbTooltip]="form.getControlValidationMessage(getControlName(i, 'name'))">
-          </td>
-          <td class="p-0">
-            <input type="text" [name]="getControlName(i, 'description')" [formControlName]="getControlName(i, 'description')" class="form-control" [(ngModel)]="subject.description">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-
-<!--
-<div class="d-flex">
-  <button class="btn btn-primary mb-1 mr-1" (click)="save()">{{texts.saveLabel}}</button>
-  <button class="btn btn-secondary mb-1 mr-auto" (click)="loadSubjects()">{{texts.resetLabel}}</button>
-  <button class="btn btn-info mb-1 mr-1" (click)="addNew()">
-    <i class="fa fa-plus"></i>
-  </button>
-  <button class="btn btn-danger mb-1" (click)="removeCurrent()">
-    <i class="fa fa-minus"></i>
-  </button>
-</div>
-<table class="table table-sm table-bordered">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">{{texts.nameLabel}}</th>
-      <th scope="col">{{texts.descriptionLabel}}</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let subject of subjects; let i = index" (click)="currentIndex = i">
-      <th scope="row">{{i + 1}}</th>
-      <td class="p-0">
-        <input type="text" class="form-control" [(ngModel)]="subject.name">
-      </td>
-      <td class="p-0">
-        <input type="text" class="form-control" [(ngModel)]="subject.description">
-      </td>
-    </tr>
-  </tbody>
-</table>
--->
+<form novalidate [formGroup]="form" (ngSubmit)="save()">
+  <!-- <div class="form-group" *ngFor="let control of form.getControls()">
+    <label>{{control.label}}</label>
+    <input class="form-control"
+      formControlName="{{control.propertyName}}"
+      [(ngModel)]="subject[control.propertyName]">
+    <ul class="list-unstyled text-danger" *ngIf="control.invalid && control.touched">
+      <li *ngFor="let error of control.getValidationMessages()">
+        {{error}}
+      </li>
+    </ul>
+  </div> -->
+  <div class="form-group">
+    <label>Name</label>
+    <input class="form-control" formControlName="name" (input)="subject.name"/>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <input class="form-control" formControlName="description" (input)="subject.description"/>
+  </div>
+  <button class="btn btn-primary mr-1"
+    type="submit"
+    [disabled]="form.invalid || !form.dirty">{{texts.saveLabel}}</button> 
+  <button class="btn btn-secondary mr-1"
+    (click)="reset()"
+    [disabled]="!form.dirty">{{texts.resetLabel}}</button>
+  <button class="btn btn-info"
+    (click)="back()">{{texts.backToListLabel}}</button>
+</form>

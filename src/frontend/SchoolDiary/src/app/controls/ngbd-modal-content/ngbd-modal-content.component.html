@@ -1,0 +1,20 @@
+<div class="modal-header"
+  [class.text-warning]="isWarning">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body"
+  [class.text-warning]="isWarning"
+  [innerHTML]=message>
+</div>
+<div class="modal-footer">
+  <button type="button"
+    class="btn"
+    [class.btn-outline-warning]="isWarning"
+    (click)="activeModal.close('Accept')">{{buttonText}}</button>
+  <button type="button"
+    class="btn btn-outline-dark"
+    (click)="activeModal.dismiss('Cancel')">Cancel</button>
+</div>

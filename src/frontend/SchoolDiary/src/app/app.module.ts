@@ -15,6 +15,8 @@ import { AdminGuard } from './admin.guard';
 import { SubjectService } from './domain/subject/service/subject.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdModalContentComponent } from './controls/ngbd-modal-content/ngbd-modal-content.component';
+import { AppModalContentService } from './controls/ngbd-modal-content/app.modal.content.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DiariesComponent,
     AboutComponent,
     HomeComponent,
-    UserComponent
+    UserComponent,
+    NgbdModalContentComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AuthenticationService,
     AuthenticatedGuard,
     AdminGuard,
-    SubjectService
+    SubjectService,
+    AppModalContentService
+  ],
+  entryComponents: [
+    NgbdModalContentComponent
   ],
   bootstrap: [AppComponent]
 })
