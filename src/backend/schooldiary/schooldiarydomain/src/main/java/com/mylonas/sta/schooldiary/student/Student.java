@@ -1,4 +1,4 @@
-package com.mylonas.sta.schooldiary.model;
+package com.mylonas.sta.schooldiary.student;
 
 import java.time.LocalDate;
 

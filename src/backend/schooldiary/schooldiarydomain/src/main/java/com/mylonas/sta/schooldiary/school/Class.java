@@ -1,4 +1,7 @@
-package com.mylonas.sta.schooldiary.model;
+package com.mylonas.sta.schooldiary.school;
+
+import com.mylonas.sta.schooldiary.schedule.Lesson;
+import com.mylonas.sta.schooldiary.schedule.WeekSchedule;
 
 import java.util.Collection;
 

@@ -1,4 +1,6 @@
-package com.mylonas.sta.schooldiary.model;
+package com.mylonas.sta.schooldiary.student;
+
+import com.mylonas.sta.schooldiary.schedule.Lesson;
 
 import java.util.Map;
 

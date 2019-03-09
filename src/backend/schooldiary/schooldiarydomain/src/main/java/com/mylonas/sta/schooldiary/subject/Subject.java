@@ -1,4 +1,4 @@
-package com.mylonas.sta.schooldiary.model;
+package com.mylonas.sta.schooldiary.subject;
 
 public class Subject {
     private String id;
