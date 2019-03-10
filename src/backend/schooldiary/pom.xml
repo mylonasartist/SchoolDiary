@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
 	<modules>
-		<module>schooldiary-persistence</module>
+		<module>schooldiary-domain</module>
 		<module>schooldiary-persistence</module>
         <module>schooldiary-web</module>
     </modules>
